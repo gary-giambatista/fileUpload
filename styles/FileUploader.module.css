@@ -5,5 +5,28 @@
 	align-items: center;
 }
 .pageTitle {
+	font-size: x-large;
 	color: white;
+}
+.uploadInput {
+	padding: 10px;
+	background-color: #1da1f2;
+	box-shadow: black 0px 1px 5px;
+	border-radius: 10px;
+}
+.uploadInput:default {
+	color: white;
+}
+.filesContainer {
+	display: flex;
+	flex-direction: column;
+}
+.filesTitle {
+	font-size: x-large;
+	color: white;
+	margin-top: 50px;
+}
+.fileNames {
+	color: white;
+	padding: 3px;
 }
