@@ -53,6 +53,11 @@ export default function FileUploader() {
 		};
 	}, [userFile]);
 
+	//instatiate userFile as null to trigger getFiles above
+	useEffect(() => {
+		setUserFile(null);
+	}, []);
+
 	async function downloadFile(fileName) {
 		const { data, error } = await supabase.storage
 			.from("files")
