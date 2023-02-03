@@ -1,0 +1,9 @@
+.componentContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.pageTitle {
+	color: white;
+}

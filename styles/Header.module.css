@@ -1,0 +1,11 @@
+.container {
+	height: 80px;
+	background-color: #192734;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: black 0px 1px 5px;
+}
+.titleText {
+	color: white;
+}
