@@ -5,7 +5,8 @@
 	align-items: center;
 }
 .pageTitle {
-	font-size: x-large;
+	font-size: xx-large;
+	font-weight: bold;
 	color: white;
 }
 .uploadInput {
@@ -28,7 +29,8 @@
 	margin: 5px;
 }
 .filesTitle {
-	font-size: x-large;
+	font-size: xx-large;
+	font-weight: bold;
 	color: white;
 	margin-top: 50px;
 }
@@ -36,6 +38,7 @@
 	color: white;
 	padding: 3px;
 	margin-right: 5px;
+	margin-left: 23px;
 }
 .downloadIcon {
 	padding: 3px;
@@ -46,12 +49,10 @@
 	background-color: #11f2d0;
 	border-radius: 5px;
 }
-.confirmButtonGroup {
-}
 .confirmButton {
-	margin: 5px;
+	margin: 10px;
 	margin-top: 30px;
-	padding: 10px;
+	padding: 12px;
 	background-color: #1da1f2;
 	box-shadow: black 0px 1px 5px;
 	border-radius: 10px;
@@ -62,10 +63,10 @@
 	background-color: #11f2d0;
 }
 .cancelButton {
-	margin: 5px;
+	margin: 10px;
 	margin-top: 30px;
-	padding: 10px;
-	background-color: #b63536;
+	padding: 12px;
+	background-color: #305973;
 	box-shadow: black 0px 1px 5px;
 	border-radius: 10px;
 	border: none;

@@ -79,7 +79,7 @@ export default function FileUploader() {
 	//execute download & reset state
 	function downloadFile() {
 		const downloadWindow = window.open(downloadUrl);
-		window.close(downloadWindow);
+		// window.close(downloadWindow);
 		setDownloadUrl("");
 	}
 
