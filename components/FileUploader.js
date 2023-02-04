@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { HiOutlineDownload } from "react-icons/hi";
 import { supabase } from "../library/supabaseClient.js";
 import styles from "../styles/FileUploader.module.css";
 
@@ -7,6 +8,8 @@ export default function FileUploader() {
 	const [userFile, setUserFile] = useState();
 	//Array of files uploaded to database bucket "files/public" on Supabase
 	const [files, setFiles] = useState([]);
+	//download file URL for downloading files
+	const [downloadUrl, setDownloadUrl] = useState("");
 
 	//Upload file function
 	async function uploadFile(event) {
@@ -58,17 +61,26 @@ export default function FileUploader() {
 		setUserFile(null);
 	}, []);
 
-	async function downloadFile(fileName) {
+	//fetch URL for download
+	async function getFileDownloadUrl(fileName) {
 		const { data, error } = await supabase.storage
 			.from("files")
-			.getPublicUrl(`public/${fileName}`);
+			.getPublicUrl(`public/${fileName}`, {
+				download: true,
+			});
 
 		if (data) {
-			console.log(JSON.stringify(data));
-			// setFiles(data);
+			// console.log(JSON.stringify(data));
+			setDownloadUrl(data.publicUrl);
 		} else if (error) {
 			console.log(error);
 		}
+	}
+	//execute download & reset state
+	function downloadFile() {
+		const downloadWindow = window.open(downloadUrl);
+		window.close(downloadWindow);
+		setDownloadUrl("");
 	}
 
 	return (
@@ -89,6 +101,14 @@ export default function FileUploader() {
 						return (
 							<div key={file.id} className={styles.fileNamesContainer}>
 								<div className={styles.fileNames}>- {file.name}</div>
+								{/* Download Icon */}
+								<HiOutlineDownload
+									onClick={() => getFileDownloadUrl(file.name)}
+									size={20}
+									title="Download"
+									color="#305973"
+									className={styles.downloadIcon}
+								/>
 							</div>
 						);
 					})}
@@ -99,6 +119,23 @@ export default function FileUploader() {
 					<div className={styles.fileNames}> No files Uploaded</div>
 				</div>
 			)}
+			{/* Confirm DOWNLOAD */}
+			{downloadUrl.length > 0 ? (
+				<div className={styles.confirmButtonGroup}>
+					<button
+						onClick={() => downloadFile()}
+						className={styles.confirmButton}
+					>
+						Confirm Download
+					</button>
+					<button
+						onClick={() => setDownloadUrl("")}
+						className={styles.cancelButton}
+					>
+						Cancel Download
+					</button>
+				</div>
+			) : null}
 		</div>
 	);
 }
